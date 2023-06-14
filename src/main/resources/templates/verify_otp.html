@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${title}">OTP Verification Page</title>
+</head>
+<body> 
+	<section >
+		<div class="container col-md-6">
+        <div class="card">
+            <div class="card-body">
+            	
+            	<div class="container">
+            	<div class="alert alert-success">A One Time Passcode has been sent to <span th:text="${email}"></span></div>
+            		<form method="Post" th:action="@{verify-otp}">
+            		
+            			<div class="form-group mt-3">
+            				<input type="text" name="uotp" class="form-control" placeholder="Enter OTP" required>
+            			</div>
+            			<div class="container text-center">
+            				<button class="btn btn-success">Verify</button>
+            			</div>
+            		</form>
+            	</div>
+            </div>
+            
+        </div>
+    </div>
+	</section>
+
+</body>
+</html>

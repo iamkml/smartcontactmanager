@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${title}"></title>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<section >
+		<div class="container">
+			<div class="card mt-0 mr-3">
+				<h1 class="text-center">Your Profile</span></h1>
+				<div class="card-body  ">
+				<div class="container text-center">
+					<img style="height:200px; width:200px;" class="profile-pic mb-2" th:src="@{'/user-profile-pic/'+${user.uImageUrl}}"/>
+				<h3><span th:text="${user.uName}"></span> </h3>
+				<table class="table">
+					<tr>
+						<th>ID</th>
+						<td th:text="${'SCMUSER'+user.uId}"></td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td th:text="${user.uEmail}"></td>
+					</tr>
+					<tr>
+						<th>Role</th>
+						<td th:text="${user.uRole}"></td>
+					</tr>
+					<tr>
+						<th>About</th>
+						<td th:text="${user.uAbout}"></td>
+					</tr>
+					<tr>
+						<th>Status</th>
+						<td th:text="${user.uStatus}"></td>
+					</tr>
+					
+				</table>
+				<!-- <p th:text="${user.uAbout}"></p> -->
+				<!-- <a th:href="@{'/user/edit/'+${contact.cId}}" class="btn btn-primary btn-sm">Edit</a>
+				<a th:href="@{'/user/delete/'+${contact.cId}}" class="btn btn-danger btn-sm">Delete</a> -->
+			</div>
+				</div>
+			</div>
+			
+		</div>
+		<script>
+		$(document).ready(()=>{
+			$('.item').removeClass('active');
+    		$('#profile-link').addClass('active');
+    	});    	
+    </script>
+	</section>
+
+</body>
+</html>

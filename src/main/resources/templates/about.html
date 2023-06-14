@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${title}"></title>
+</head>
+<body>
+	<section>
+		<div class="card m-3">
+			<h1 class="text-center">About</h1>
+			<div class="card-body px-5">
+				<div class="row  margin-auto ">
+					<p>Welcome to the Smart Contact Manager project! We're excited
+						to introduce a modern and efficient solution for managing your
+						contacts. Built on the powerful Spring Boot framework, our
+						application provides an intuitive interface and advanced features
+						to streamline your contact management experience.</p>
+				</div>
+				<div class="row  margin-auto ">
+					<p>At Smart Contact Manager, we understand the importance of
+						staying connected with your network and maintaining strong
+						relationships. Our goal is to simplify the process by offering a
+						comprehensive set of tools and functionalities that will enhance
+						your contact management workflow.</p>
+				</div>
+				<div class="row  margin-auto ">
+					<h5>Key Features: </h5>
+					<p> 1. Contact Organization: Seamlessly store and organize all
+						your contacts in one central location. Store image and email and phone</p>
+					<p>2. We can update contacts details like image, phone no, email address and work.</p>
+					<p>3. Advanced Search: Find the right contact quickly and
+						effortlessly with our powerful search capabilities.</p>
+					<p>4. We can add multiple contacts.</p>
+					<p>5. User can login and use this application for store contacts.</p>
+					<p>6. User can update password login, logout with security</p>
+					<p>7. In this project implemented Security, Authentication on HTTP endpoints , Application Properties, Thymeleaf, Email</p>
+					<p>8. User can recover his account throught OTP</p>
+				</div>
+				<div class="container"></div>
+			</div>
+
+		</div>
+	</section>
+
+</body>
+</html>

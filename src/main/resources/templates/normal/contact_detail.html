@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${title}">Contact Detail</title>
+</head>
+<body>
+	<section >
+	<div class="card mr-3 ml-3 mt-0">
+		
+		<div class="card-body" th:if="${contact}">
+		<div th:if="${session.message}" class="container">
+			<div th:classappend="${'alert-'+session.message.type}" class="text-center alert" role="alert">
+				<span th:text="${session.message.content}"></span>
+			</div>
+			<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+		</div>
+		<h1 class="text-center">Contact Details</h1>
+			<div class="container text-center">
+				<img style="height:200px; width:200px;" class="profile-pic" th:src="@{'/profile_pic/'+${contact.cImage}}"/>
+				<h3><span th:text="${contact.cFirstName}"></span> ( <span th:text="${contact.cSecondName}"></span> )</h3>
+				<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<th>ID</th>
+						<td th:text="${'SCMUSER'+contact.cId}"></td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td th:text="${contact.cEmail}"></td>
+					</tr>
+					<tr>
+						<th>Phone</th>
+						<td th:text="${contact.cPhone}"></td>
+					</tr>
+					<tr>
+						<th>Work</th>
+						<td th:text="${contact.cWork}"></td>
+					</tr>
+				</table>
+				</div>
+				<p th:text="${contact.cDescription}"></p>
+				<a th:href="@{'/user/edit/'+${contact.cId}}" class="btn btn-primary btn-sm">Edit</a>
+				<a th:href="@{'/user/delete/'+${contact.cId}}" class="btn btn-danger btn-sm">Delete</a>
+			</div>
+		</div>
+		<h1 th:unless="${contact}" class="text-danger text-center">You don't have permission to access other users contact</h1>
+	</div>
+	
+	</section>
+
+</body>
+</html>

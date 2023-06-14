@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title th:text="${title}"></title>
+</head>
+
+<body>
+	<section>
+		<div id="signform" class="container text-dark">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my_card">
+					
+					
+					<div th:if="${session.message}" th:classappend="${session.message.type}" class="text-center alert ">
+					<span class="text-center" th:text="${session.message.content}"></span>
+					  <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+					  
+					</div>
+						<h1 class="text-center">Sign Up Here</h1>
+						<form novalidate th:action="@{/validation}" method="Post" th:object="${user}">
+							<div class="form-group">
+								<label for="user_name" class="form-label">Your Name
+								</label> <input type="text" class="form-control" th:classappend="${#fields.hasErrors('uName')?'is-invalid':''}" name="uName" id="user_name"
+									aria-describedby="emailHelp" th:value="${user.uName}" placeholder="Enter Your Name" >
+									<div class="invalid-feedback" th:each="e:${#fields.errors('uName')}" th:text="${e}">Name field is required !!</div>
+							</div>
+							<div class="form-group">
+								<label for="user_email" class="form-label">Your Email
+								</label> <input type="email"  th:value="${user.uEmail}" class="form-control" name="uEmail" id="user_email"
+									aria-describedby="emailHelp" placeholder="Enter Your Email" required>
+							</div>
+							<div class="form-group">
+								<label for="user_password" class="form-label">Your Password
+								</label> <input type="password" class="form-control" name="uPassword" id="user_password"
+									aria-describedby="emailHelp" placeholder="Enter Your Password" required>
+							</div>
+							<div class="form-group">
+								<label for="description">Description</label>
+								<textarea  th:value="${user.uAbout}" class="form-control" name="uAbout" id="description" cols="30" rows="5" placeholder="Write something about yourself..."></textarea>
+							</div>
+							<div class="form-group form-check">
+								<input type="checkbox" class="form-check-input" name="agreement" id="agreement">
+								<label for="agreement">Accept terms and conditions</label>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn main-primary btn_hover text-white">Submit</button>
+								<button type="reset" class="btn main-primary btn_hover text-white">Reset</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+	</section>
+
+</body>
+
+</html>
